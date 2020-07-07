@@ -1,0 +1,1 @@
+This app shows list of movies from REST API using MVVM architecture pattern.
