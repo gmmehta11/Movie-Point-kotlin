@@ -1,11 +1,10 @@
-package com.example.movieapp.ui
+package com.example.movieapp.ui.popular_movie
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.movieapp.R
 import com.example.movieapp.ui.movie_details.MovieDetails
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
