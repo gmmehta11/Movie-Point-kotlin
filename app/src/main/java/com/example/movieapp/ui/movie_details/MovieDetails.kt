@@ -1,4 +1,4 @@
-package com.example.movieapp.movie_details
+package com.example.movieapp.ui.movie_details
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -27,10 +27,13 @@ class MovieDetails : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_details)
 
-        val movieId: Int = 1
+        val movieId: Int = intent.getIntExtra("id", 1)
         val apiService : TheMovieDBInterface = TheMovieDBClient.getClient()
 
-        movieRepository = MovieDetailsRepository(apiService)
+        movieRepository =
+            MovieDetailsRepository(
+                apiService
+            )
 
         viewModel = getViewModel(movieId)
 
@@ -62,11 +65,14 @@ class MovieDetails : AppCompatActivity() {
             .into(iv_movie_poster)
     }
 
-    private fun getViewModel(movieId: Int): MovieDetailViewModel{
+    private fun getViewModel(movieId: Int): MovieDetailViewModel {
         return ViewModelProviders.of(this, object : ViewModelProvider.Factory{
             override fun <T : ViewModel?> create(modelClass: Class<T>): T{
                 @Suppress("UNCHECKED_CAST")
-                return MovieDetailViewModel(movieRepository, movieId) as T
+                return MovieDetailViewModel(
+                    movieRepository,
+                    movieId
+                ) as T
             }
         })[MovieDetailViewModel::class.java]
     }
